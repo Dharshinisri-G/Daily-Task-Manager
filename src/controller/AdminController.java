@@ -31,16 +31,23 @@ public class AdminController {
 //        adminDAO.removeUser(userId)
 //    }
 
-    public void updateEmail(int userId,String email){
-        adminDAO.changeEmail(userId,email);
+    public void updateEmail(int adminId,String email){
+        adminDAO.changeEmail(adminId,email);
+        System.out.println("Your email is updated to "+email);
     }
 
-    public void updateContact(int userId,String contact){
-        adminDAO.changeContact(userId,contact);
+    public void updateContact(int adminId,String contact){
+        adminDAO.changeContact(adminId,contact);
+        System.out.println("Your contact is updated to "+contact);
     }
 
-    public void updateAge(int userId,int age){
-        adminDAO.changeAge(userId,age);
+    public void updateAge(int adminId,int age){
+        adminDAO.changeAge(adminId,age);
+        System.out.println("Your age is updated to "+age);
     }
 
+    public void updatePassword(int adminId,String password){
+        adminDAO.changePassword(adminId,password);
+        System.out.println("Your password is updated successfully");
+    }
 }

@@ -34,7 +34,7 @@ public class Main {
                    System.out.println("Closing Daily Task Manager......");
                    return;
                default:
-                   System.out.println("Invalid input, Try Again...");
+                   System.out.println("Invalid input, Try Again...\n");
            }
        }
     }
@@ -101,7 +101,7 @@ public class Main {
                             return;
                         }
                         else{
-                             System.out.print("Invalid Credentials...\nWant to Try Again (yes/no): ");
+                             System.out.print("Invalid Credentials...\nWant to Try Again (yes/type anything): ");
                              String choice=x.nextLine();
                              if(!choice.equalsIgnoreCase("yes")) break;
                         }

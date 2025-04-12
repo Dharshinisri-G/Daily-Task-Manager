@@ -63,7 +63,7 @@ public class ValidateInput {
 
     public int getValidUserId(UserController userController){
         while(true){
-            System.out.println("Enter UserId: ");
+            System.out.print("Enter UserId: ");
             int userId=x.nextInt();
             x.nextLine();
             if(userController.validUserId(userId)){
@@ -144,7 +144,7 @@ public class ValidateInput {
 
     public int getValidTaskId(TaskController taskController,int userId){
         while(true){
-            System.out.println("Enter TaskId: ");
+            System.out.print("Enter TaskId: ");
             int taskId=x.nextInt();
             x.nextLine();
             if(taskController.validTaskId(userId,taskId)){

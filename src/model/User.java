@@ -27,6 +27,7 @@ public class User {
     public String getName(){return name;}
     public String getEmail(){return email;}
     public String getPhone(){return phone;}
+    public int getAge(){return age;}
 
     public void setName(String name){this.name=name;}
     public void setUserName(String userName){this.userName=userName;}

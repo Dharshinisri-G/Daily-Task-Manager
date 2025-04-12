@@ -10,4 +10,6 @@ public interface AdminDAO {
     void changeEmail(int adminId,String email);
     void changeContact(int adminId,String contact);
     void changeAge(int adminId,int age);
+    void changePassword(int adminId,String password);
+
 }

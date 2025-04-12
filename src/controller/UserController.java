@@ -55,13 +55,21 @@ public class UserController {
 
     public void updateEmail(int userId,String email){
         userDAO.changeEmail(userId,email);
+        System.out.println("Your email is updated to "+email);
     }
 
     public void updateContact(int userId,String contact){
         userDAO.changeContact(userId,contact);
+        System.out.println("Your contact is updated to "+contact);
     }
 
     public void updateAge(int userId,int age){
         userDAO.changeAge(userId,age);
+        System.out.println("Your age is updated to "+age);
+    }
+
+    public void updatePassword(int userId,String password){
+        userDAO.changePassword(userId,password);
+        System.out.println("Your password is updated successfully");
     }
 }

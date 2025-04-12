@@ -22,9 +22,9 @@ public class UserView{
 //            System.out.println("╚══════════════════════════════════════╝");
             System.out.println("-------------------USER DASHBOARD----------------");
             System.out.println("Operations you can do ");
-            System.out.println("1.View your Information\n2.Set Task\n3.View Tasks\n4.Update Tasks\n5.Filter Tasks\n6.Delete Task\n7.Logout");
+            System.out.println("1.View your Information\n2.Update your Information \n3.Set Task\n4.View Tasks\n5.Update Tasks\n6.Filter Tasks\n7.Delete Task\n8.Logout");
             int choice= validateInput.getValidInt("Enter your choice: ");
-            if(choice==7){
+            if(choice==8){
                 System.out.println("Logging Out...!\n");
                 return;
             }
@@ -34,6 +34,10 @@ public class UserView{
                     pause();
                     break;
                 case 2:
+                    updateInformation(userController,userId);
+                    pause();
+                    break;
+                case 3:
                     String taskName= validateInput.getValidTaskName();
                     String description=validateInput.getValidDescription();
                     String category=validateInput.getValidCategory();
@@ -44,19 +48,19 @@ public class UserView{
                     taskController.setTask(userId,taskName,description,category,status,priority,createdDate,dueDate);
                     pause();
                     break;
-                case 3:
+                case 4:
                     taskController.viewAllTasks(userId);
                     pause();
                     break;
-                case 4:
+                case 5:
                     updateTask(userId);
                     pause();
                     break;
-                case 5:
+                case 6:
                     filterTask(userId);
                     pause();
                     break;
-                case 6:
+                case 7:
                     if(taskController.hasTasks(userId)) {
                         int taskId = validateInput.getValidTaskId(taskController, userId);
                         taskController.deleteTask(userId, taskId);
@@ -64,6 +68,36 @@ public class UserView{
                         System.out.println("No Tasks is available..");
                     }
                     pause();
+                    break;
+                default:
+                    System.out.println(errMessage);
+            }
+        }
+    }
+
+    public void updateInformation(UserController userController,int userId){
+        while(true){
+            System.out.println("Update your \n1.Email\n2.Password\n3.Contact\n4.Age\n5.Go Back");
+            int updateChoice= validateInput.getValidInt("Enter your choice: ");
+            if(updateChoice==5){
+                return;
+            }
+            switch(updateChoice){
+                case 1:
+                    String email= validateInput.getValidEmail();
+                    userController.updateEmail(userId,email);
+                    break;
+                case 2:
+                    String password= validateInput.getValidPassword();
+                    userController.updatePassword(userId,password);
+                    break;
+                case 3:
+                    String contact= validateInput.getValidContact();
+                    userController.updateContact(userId,contact);
+                    break;
+                case 4:
+                    int age= validateInput.getValidAge();
+                    userController.updateAge(userId,age);
                     break;
                 default:
                     System.out.println(errMessage);

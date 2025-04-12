@@ -40,34 +40,21 @@ public class AdminDAOImpl implements AdminDAO{
 
     @Override
     public void changeEmail(int adminId, String email) {
-        Admin admin=adminMap.get(adminId);
-        if(admin!=null){
-            admin.setEmail(email);
-        }
-        else{
-            System.out.println("Admin doesn't exist");
-        }
+        adminMap.get(adminId).setEmail(email);
     }
 
     @Override
     public void changeContact(int adminId, String contact) {
-        Admin admin=adminMap.get(adminId);
-        if(admin!=null){
-            admin.setPhone(contact);
-        }
-        else{
-            System.out.println("Admin does't Exist");
-        }
+        adminMap.get(adminId).setPhone(contact);
     }
 
     @Override
     public void changeAge(int adminId, int age) {
-        Admin admin=adminMap.get(adminId);
-        if(admin!=null){
-            admin.setAge(age);
-        }
-        else{
-            System.out.println("Admin doesn't exist");
-        }
+        adminMap.get(adminId).setAge(age);
+    }
+
+    @Override
+    public void changePassword(int adminId, String password) {
+        adminMap.get(adminId).setPassword(password);
     }
 }

@@ -21,9 +21,9 @@ public class AdminView {
 //            System.out.println("╚══════════════════════════════════════╝");
             System.out.println("-------------------ADMIN DASHBOARD----------------");
             System.out.println("Operations you can do ");
-            System.out.println("1.View your Information\n2.View a User\n3.View All users \n4.Delete User\n5.View Tasks\n6.Filter Tasks\n7.Delete Task\n8.Logout");
+            System.out.println("1.View your Information\n2.Update your Information\n3.View a User\n4.View All users \n5.Delete User\n6.View Tasks\n7.Filter Tasks\n8.Delete Task\n9.Logout");
             int choice= validateInput.getValidInt("Enter your choice: ");
-            if(choice==8){
+            if(choice==9){
                 System.out.println("Logging Out...!\n");
                 return;
             }
@@ -33,6 +33,10 @@ public class AdminView {
                     pause();
                     break;
                 case 2:
+                    updateInformation(adminController,adminId);
+                    pause();
+                    break;
+                case 3:
                     if(userController.hasUsers()) {
                         int userId = validateInput.getValidUserId(userController);
                         userController.viewUser(userId);
@@ -41,11 +45,11 @@ public class AdminView {
                     }
                     pause();
                     break;
-                case 3:
+                case 4:
                     userController.viewAllUsers();
                     pause();
                     break;
-                case 4:
+                case 5:
                     if(userController.hasUsers()) {
                         int userId = validateInput.getValidUserId(userController);
                         userController.deleteUser(userId);
@@ -55,15 +59,15 @@ public class AdminView {
                     }
                     pause();
                     break;
-                case 5:
+                case 6:
                     viewTasks(userController,taskController);
                     pause();
                     break;
-                case 6:
+                case 7:
                     filterTask(userView,userController,taskController);
                     pause();
                     break;
-                case 7:
+                case 8:
                     if(userController.hasUsers()) {
                         int userId = validateInput.getValidUserId(userController);
                         if (taskController.hasTasks(userId)) {
@@ -82,10 +86,41 @@ public class AdminView {
             }
         }
     }
+
+    public void updateInformation(AdminController adminController,int userId){
+        while(true){
+            System.out.println("Update your \n1.Email\n2.Password\n3.Contact\n4.Age\n5.Go Back");
+            int updateChoice= validateInput.getValidInt("Enter your choice: ");
+            if(updateChoice==5){
+                return;
+            }
+            switch(updateChoice){
+                case 1:
+                    String email= validateInput.getValidEmail();
+                    adminController.updateEmail(userId,email);
+                    break;
+                case 2:
+                    String password= validateInput.getValidPassword();
+                    adminController.updatePassword(userId,password);
+                    break;
+                case 3:
+                    String contact= validateInput.getValidContact();
+                    adminController.updateContact(userId,contact);
+                    break;
+                case 4:
+                    int age= validateInput.getValidAge();
+                    adminController.updateAge(userId,age);
+                    break;
+                default:
+                    System.out.println(errMessage);
+            }
+        }
+    }
+
     public void viewTasks(UserController userController,TaskController taskController){
         while(true) {
             System.out.println("View Task of (All Users/Specific user/Go Back):");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
             String viewTaskOf=x.nextLine();
             if(viewTaskOf.equalsIgnoreCase("go back")){
                 return;
@@ -111,7 +146,7 @@ public class AdminView {
     public void filterTask(UserView userView,UserController userController,TaskController taskController){
         while(true) {
             System.out.println("Filter Task of (All Users/Specific user/Go Back):");
-            System.out.println("Enter your choice: ");
+            System.out.print("Enter your choice: ");
             String viewTaskOf=x.nextLine();
             if(viewTaskOf.equalsIgnoreCase("go back")){
                 System.out.println("Back to Dashboard");

@@ -15,4 +15,5 @@ public interface UserDAO {
     void changeEmail(int userId,String email);
     void changeContact(int userId,String contact);
     void changeAge(int userId,int age);
+    void changePassword(int userId,String password);
 }

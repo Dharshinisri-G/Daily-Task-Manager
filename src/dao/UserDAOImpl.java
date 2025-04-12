@@ -61,31 +61,21 @@ public class UserDAOImpl implements UserDAO{
 
     @Override
     public void changeEmail(int userId, String email) {
-         User user=userMap.get(userId);
-         if(user!=null){
-             user.setEmail(email);
-         }else{
-             System.out.println("User doesn't exist");
-         }
+        userMap.get(userId).setEmail(email);
     }
 
     @Override
     public void changeContact(int userId, String contact) {
-        User user=userMap.get(userId);
-        if(user!=null){
-            user.setPhone(contact);
-        }else{
-            System.out.println("User doesn't exist");
-        }
+        userMap.get(userId).setPhone(contact);
     }
 
     @Override
     public void changeAge(int userId, int age) {
-        User user=userMap.get(userId);
-        if(user!=null){
-            user.setAge(age);
-        }else{
-            System.out.println("User doesn't exist");
-        }
+        userMap.get(userId).setAge(age);
+    }
+
+    @Override
+    public void changePassword(int userId, String password) {
+        userMap.get(userId).setPassword(password);
     }
 }
